@@ -8,10 +8,14 @@ const tasks = [
 ];
 
 // Sample settings input
+const startH1 = '2024-11-11';
 const globalSettings = {
     assignees: {
-        1: { startDate: '2024-10-01' }, // assignee 1 joins on Oct 1, 2024
-        2: { startDate: '2024-10-02' }, // assignee 2 joins on Oct 2, 2024
+        'Shir': { startDate: startH1 }, 
+        'adi': { startDate: startH1 },
+        'Alex': { startDate: startH1 },
+        'Tal': { startDate: startH1 },
+        
     },
     weekends: ['Friday', 'Saturday'], // weekends are Sat-Sun
     holidays: ['2024-10-05'], // custom holidays
@@ -49,7 +53,7 @@ function buildGantt(tasks, settings) {
     tasks.forEach((task) => {
         const assigneeId = task.assignee;
         const estimation = task.estimation;
-
+        console.log(assigneeWorkDays[assigneeId]);
         if (!assigneeWorkDays[assigneeId]) {
             // If it's the first task for this assignee, set their start date
             assigneeWorkDays[assigneeId] = moment(
@@ -67,8 +71,9 @@ function buildGantt(tasks, settings) {
         // Calculate task end date by adding estimation (in days) while skipping weekends/holidays
         let daysToAdd = estimation;
         let taskEndDate = taskStartDate.clone();
-
+        
         while (daysToAdd > 0) {
+            
             taskEndDate = taskEndDate.add(1, 'days');
             if (
                 !isWeekend(taskEndDate, settings.weekends) &&

@@ -34,10 +34,18 @@ type GanttEntry = {
 // ];
 
 // Sample settings input
+const startH1 = '2025-01-01';
 const settings: Settings = {
     assignees: {
-        Alex: { start: '2024-10-22' },
-        Grom: { start: '2024-10-28' },
+        'Dana': { start: startH1 }, 
+        'Eldad': { start: '2025-01-03' },
+        'Sharon': { start: startH1 },
+        'Alex': { start: '2025-01-16' },
+        'Guy': { start: '2025-01-14' },
+        'Arik': { start: '2025-01-16' },
+        'Shir': { start: startH1 }, 
+        'adi': { start: startH1 },
+        'Tal': { start: startH1 },
     },
     weekends: ['Friday', 'Saturday'],
     holidays: ['2024-10-05'],
@@ -85,7 +93,6 @@ export function buildGantt(tasks: Task[]): GanttEntry[] {
         const id = task.id;
         const assigneeId = task.assignee;
         const estimation = task.estimation;
-        console.log(assigneeId);
 
         // If it's the first task for this assignee, set their start date
         if (!assigneeWorkDays[assigneeId]) {
@@ -106,7 +113,7 @@ export function buildGantt(tasks: Task[]): GanttEntry[] {
         let taskEndDate = taskStartDate.clone();
         let i = 0;
         while (daysToAdd > 0) {
-            taskEndDate = taskEndDate.add(i > 0 ? 1 : 0, 'days');
+            taskEndDate = taskEndDate.add(i > 0 ? 1 : daysToAdd, 'days');
             i = i + 1;
             if (
                 !isWeekend(taskEndDate, settings.weekends) &&
@@ -128,7 +135,7 @@ export function buildGantt(tasks: Task[]): GanttEntry[] {
         // Update the last working day for this assignee
         assigneeWorkDays[assigneeId] = taskEndDate;
     });
-
+    console.log('gantt: ', gantt);
     return gantt;
 }
 
