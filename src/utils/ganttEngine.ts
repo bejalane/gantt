@@ -34,7 +34,7 @@ type GanttEntry = {
 // ];
 
 // Sample settings input
-const startH1 = '2025-01-01';
+const startH1 = '2024-11-17';
 const settings: Settings = {
     assignees: {
         'Dana': { start: startH1 }, 
@@ -113,7 +113,7 @@ export function buildGantt(tasks: Task[]): GanttEntry[] {
         let taskEndDate = taskStartDate.clone();
         let i = 0;
         while (daysToAdd > 0) {
-            taskEndDate = taskEndDate.add(i > 0 ? 1 : estimation <= 1 ? 1 : 0, 'days');
+            taskEndDate = taskEndDate.add(1, 'days');
             if (
                 !isWeekend(taskEndDate, settings.weekends) &&
                 !isHoliday(taskEndDate, settings.holidays)

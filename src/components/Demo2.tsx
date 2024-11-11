@@ -10,12 +10,12 @@ const Demo = () => {
         const records = ganttChart([
             {
               "name": "Create airflow dag for inserting creatives_urls table",
-              "estimation": 3,
+              "estimation": 4,
               "assignee": "Shir"
             },
             {
               "name": "Create airflow dag for creating thumbnails:\nGet data from singlestore- 1d\nScreenshot tool-7d\nSave thumbnails in s3-1d",
-              "estimation": 3,
+              "estimation": 9,
               "assignee": "Shir"
             },
             {
@@ -96,17 +96,17 @@ const Demo = () => {
             {
               "name": "Report a creative (setReportedTags) - TBD on flow",
               "estimation": "",
-              "assignee": "adi"
+              "assignee": "Shir"
             },
             {
               "name": "Add integration with cinema service",
               "estimation": 5,
-              "assignee": "adi"
+              "assignee": "Shir"
             },
             {
               "name": "Integration and testing with ui",
               "estimation": 7,
-              "assignee": "adi"
+              "assignee": "Shir"
             },
             {
               "name": "make common component for filters (notification & creatives)",
@@ -115,7 +115,7 @@ const Demo = () => {
             },
             {
               "name": "filters deeplink legacy support",
-              "estimation": 1,
+              "estimation": 0,
               "assignee": "adi"
             },
             {
@@ -155,7 +155,7 @@ const Demo = () => {
             },
             {
               "name": "filter: Store category",
-              "estimation": 1,
+              "estimation": 0,
               "assignee": "adi"
             },
             {
@@ -164,23 +164,8 @@ const Demo = () => {
               "assignee": "adi"
             },
             {
-              "name": "POC grid container layout as a part pf the shared table DataGrid",
-              "estimation": "",
-              "assignee": "adi"
-            },
-            {
               "name": "video component in table (the netfilx component) POC needed",
               "estimation": 7,
-              "assignee": "adi"
-            },
-            {
-              "name": "grid container 3 infiny scroll",
-              "estimation": "",
-              "assignee": "adi"
-            },
-            {
-              "name": "grid container spread layout",
-              "estimation": "",
               "assignee": "adi"
             },
             {
@@ -297,6 +282,51 @@ const Demo = () => {
               "name": "customiztion columns modal - shared UI",
               "estimation": 5,
               "assignee": "Alex"
+            },
+            {
+              "name": "",
+              "estimation": "",
+              "assignee": ""
+            },
+            {
+              "name": "",
+              "estimation": "",
+              "assignee": ""
+            },
+            {
+              "name": "",
+              "estimation": "",
+              "assignee": ""
+            },
+            {
+              "name": "",
+              "estimation": "",
+              "assignee": ""
+            },
+            {
+              "name": "",
+              "estimation": "",
+              "assignee": ""
+            },
+            {
+              "name": "Filters",
+              "estimation": "",
+              "assignee": ""
+            },
+            {
+              "name": "* List of all filters(ofdklasd , dslakdas)",
+              "estimation": "",
+              "assignee": ""
+            },
+            {
+              "name": "Video",
+              "estimation": "",
+              "assignee": ""
+            },
+            {
+              "name": "* List of all tasks related to playing video",
+              "estimation": "",
+              "assignee": ""
             }
           ]);
         console.log(records);
