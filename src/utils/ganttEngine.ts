@@ -88,7 +88,7 @@ function getNextWorkingDay(
 export function buildGantt(tasks: Task[]): GanttEntry[] {
     const gantt: GanttEntry[] = [];
     const assigneeWorkDays: Record<string, moment.Moment> = {};
-
+    
     tasks.forEach((task) => {
         const id = task.id;
         const assigneeId = task.assignee;
@@ -113,14 +113,14 @@ export function buildGantt(tasks: Task[]): GanttEntry[] {
         let taskEndDate = taskStartDate.clone();
         let i = 0;
         while (daysToAdd > 0) {
-            taskEndDate = taskEndDate.add(i > 0 ? 1 : daysToAdd, 'days');
-            i = i + 1;
+            taskEndDate = taskEndDate.add(i > 0 ? 1 : estimation <= 1 ? 1 : 0, 'days');
             if (
                 !isWeekend(taskEndDate, settings.weekends) &&
                 !isHoliday(taskEndDate, settings.holidays)
             ) {
                 daysToAdd -= 1;
             }
+            i = i + 1;
         }
 
         // Record the Gantt chart entry

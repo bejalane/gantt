@@ -10,12 +10,12 @@ const Demo = () => {
         const records = ganttChart([
             {
               "name": "Create airflow dag for inserting creatives_urls table",
-              "estimation": 4,
+              "estimation": 3,
               "assignee": "Shir"
             },
             {
               "name": "Create airflow dag for creating thumbnails:\nGet data from singlestore- 1d\nScreenshot tool-7d\nSave thumbnails in s3-1d",
-              "estimation": 9,
+              "estimation": 3,
               "assignee": "Shir"
             },
             {
