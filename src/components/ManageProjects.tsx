@@ -39,6 +39,7 @@ const ManageProjects: FC<ManageProjectsProps> = ({ onProjectSelect }) => {
                 JSON.stringify([newProject, ...projects])
             );
             console.log(onProjectSelect);
+            onProjectSelect(newProject);
         }
     };
 
@@ -47,21 +48,37 @@ const ManageProjects: FC<ManageProjectsProps> = ({ onProjectSelect }) => {
     };
     return (
         <>
-            <div>
-                <Input placeholder="Enter project name" onChange={onChange} />;
-                <Button type="primary" onClick={handleCreate}>
-                    + Create gantt project
-                </Button>
-            </div>
-            <div>
-                {projects.map((project) => (
-                    <div
-                        key={project.name}
-                        onClick={() => handleSelect(project)}
-                    >
-                        {project.name}
-                    </div>
-                ))}
+            <div style={{ padding: '20px' }}>
+                <h2>Manage Gantt projects</h2>
+                <div style={{ display: 'flex' }}>
+                    <Input
+                        placeholder="Enter project name"
+                        onChange={onChange}
+                        style={{ width: '300px', marginRight: '10px' }}
+                    />
+
+                    <Button type="primary" onClick={handleCreate}>
+                        + Create gantt project
+                    </Button>
+                </div>
+                <div style={{ padding: '20px 10px' }}>
+                    {projects.map((project) => (
+                        <div
+                            key={project.name}
+                            onClick={() => handleSelect(project)}
+                            style={{
+                                padding: '10px',
+                                cursor: 'pointer',
+                                background: '#f3f3f3',
+                                width: '20%',
+                                borderRadius: '10px',
+                                marginBottom: '10px',
+                            }}
+                        >
+                            {project.name}
+                        </div>
+                    ))}
+                </div>
             </div>
         </>
     );

@@ -26,7 +26,6 @@ const Project: FC<ProjectProps> = ({ selectedProject, backToProjects }) => {
     >(selectedProject.data.tasks || undefined);
 
     useEffect(() => {
-        console.log('TRIGGER', assigneeSettings);
         const myProjects = localStorage.getItem('ganttProjects');
         if (myProjects) {
             const parsed: GanttProject[] = JSON.parse(myProjects);
@@ -95,17 +94,19 @@ const Project: FC<ProjectProps> = ({ selectedProject, backToProjects }) => {
                     {!showGantt && (
                         <div style={{ width: '40%' }}>
                             <CsvUploader
-                                setGanttData={(data: Task[]) =>
-                                    setCurrentGanttData(data)
-                                }
-                                setAssigneeSettings={(
-                                    settings: AssigneeSettings
-                                ) => setAssigneeSettings(settings)}
+                                setGanttData={(data: Task[]) => {
+                                    setCurrentGanttData([]);
+                                    setUpdatedTableData(data);
+                                    setTimeout(
+                                        () => setCurrentGanttData(() => data),
+                                        100
+                                    );
+                                }}
                             />
                         </div>
                     )}
 
-                    {currentGanttData && !showGantt && (
+                    {currentGanttData.length > 0 && !showGantt && (
                         <div style={{ width: '60%' }}>
                             <SettingsEditor
                                 data={currentGanttData}

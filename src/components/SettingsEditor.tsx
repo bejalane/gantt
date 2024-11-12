@@ -30,6 +30,7 @@ const SettingsEditor: FC<SettingsEditorProps> = ({
     setAssigneeSettings,
     assigneeSettings,
 }) => {
+    console.log('ASD: ', assigneeSettings);
     const [settings, setSettings] = useState<AssigneeSettings>(
         assigneeSettings || {}
     );
@@ -44,9 +45,9 @@ const SettingsEditor: FC<SettingsEditorProps> = ({
             if (assignee) {
                 newSettings[assignee] = {
                     startDate:
-                        settings[assignee].startDate ||
+                        settings[assignee]?.startDate ||
                         dayjs().format('YYYY-MM-DD'),
-                    vacationDates: settings[assignee].vacationDates || [],
+                    vacationDates: settings[assignee]?.vacationDates || [],
                 };
             }
         });
@@ -74,7 +75,7 @@ const SettingsEditor: FC<SettingsEditorProps> = ({
     };
 
     const onChangeVacationDates = (
-        date: Dayjs,
+        date: Dayjs | string[],
         dateString: string[],
         assignee: string
     ) => {

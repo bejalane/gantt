@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import Papa from 'papaparse';
 import { Task } from '../interfaces/Task';
-// import SettingsEditor from './SettingsEditor';
-import { AssigneeSettings } from '../interfaces/AssigneeSettings';
 import { v4 as uuidv4 } from 'uuid';
 
 type CsvData = {
@@ -10,13 +8,9 @@ type CsvData = {
 };
 type CsvUploaderProps = {
     setGanttData: (data: Task[]) => void;
-    setAssigneeSettings: (settings: AssigneeSettings) => void;
 };
 
-const CsvUploader: React.FC<CsvUploaderProps> = ({
-    setGanttData,
-    // setAssigneeSettings,
-}) => {
+const CsvUploader: React.FC<CsvUploaderProps> = ({ setGanttData }) => {
     const [jsonData, setJsonData] = useState<Task[]>([]);
 
     const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
