@@ -90,8 +90,9 @@ const Project: FC<ProjectProps> = ({ selectedProject, backToProjects }) => {
                         </button>
                     )}
                 </div>
-                <div style={{ display: 'flex', padding: '20px' }}>
-                    {!showGantt && (
+
+                {!showGantt && (
+                    <div style={{ display: 'flex', padding: '20px' }}>
                         <div style={{ width: '40%' }}>
                             <CsvUploader
                                 setGanttData={(data: Task[]) => {
@@ -104,18 +105,17 @@ const Project: FC<ProjectProps> = ({ selectedProject, backToProjects }) => {
                                 }}
                             />
                         </div>
-                    )}
-
-                    {currentGanttData.length > 0 && !showGantt && (
-                        <div style={{ width: '60%' }}>
-                            <SettingsEditor
-                                data={currentGanttData}
-                                setAssigneeSettings={setAssigneeSettings}
-                                assigneeSettings={assigneeSettings}
-                            />
-                        </div>
-                    )}
-                </div>
+                        {currentGanttData.length > 0 && (
+                            <div style={{ width: '60%' }}>
+                                <SettingsEditor
+                                    data={currentGanttData}
+                                    setAssigneeSettings={setAssigneeSettings}
+                                    assigneeSettings={assigneeSettings}
+                                />
+                            </div>
+                        )}
+                    </div>
+                )}
 
                 {currentGanttData.length > 0 && !showGantt && (
                     <div style={{ padding: '20px' }}>

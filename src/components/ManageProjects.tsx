@@ -69,7 +69,7 @@ const ManageProjects: FC<ManageProjectsProps> = ({ onProjectSelect }) => {
                             style={{
                                 padding: '10px',
                                 cursor: 'pointer',
-                                background: '#f3f3f3',
+                                background: 'rgba(85,85,85,0.15)',
                                 width: '20%',
                                 borderRadius: '10px',
                                 marginBottom: '10px',
