@@ -1,14 +1,29 @@
-import './App.css';
-import Demo2 from './components/Demo2';
+import { useState } from 'react';
+import ManageProjects from './components/ManageProjects';
+import { GanttProject } from './interfaces/GanttProject';
+import Project from './Project';
 
-function App() {
+const App = () => {
+    const [selectedProject, setSelectedProject] = useState<
+        GanttProject | undefined
+    >();
     return (
         <>
-            <div>Gantt demo generic</div>
-
-            <Demo2 />
+            {!selectedProject && (
+                <ManageProjects
+                    onProjectSelect={(project: GanttProject) => {
+                        setSelectedProject(project);
+                    }}
+                />
+            )}
+            {selectedProject && (
+                <Project
+                    selectedProject={selectedProject}
+                    backToProjects={() => setSelectedProject(undefined)}
+                />
+            )}
         </>
     );
-}
+};
 
 export default App;
